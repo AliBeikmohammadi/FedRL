@@ -1,5 +1,5 @@
-# Collaborative Value Function Estimation Under Model Mismatch:  
-## A Federated Temporal Difference Analysis
+# FedTD(0)
+## Collaborative Value Function Estimation Under Model Mismatch: A Federated Temporal Difference Analysis
 
 This repository contains the code for our submission to **ECML PKDD 2025**, titled **"Collaborative Value Function Estimation Under Model Mismatch: A Federated Temporal Difference Analysis."** The code implements a Federated TD(0) algorithm for policy evaluation in environments with model mismatch. In our setting, each agent operates under a perturbed MDP (sampled from a distribution centered at the true transition model), and agents periodically share their value estimates to collaboratively learn the true value function.
 
@@ -10,13 +10,10 @@ This repository contains the code for our submission to **ECML PKDD 2025**, titl
 ```
 ├── FedTD-main.py          # Main simulation script (Federated TD(0)) with argparse support.
 ├── FedTD-plot.py          # Plotting routines for analyzing simulation results.
-├── submit_jobs.py         # (Optional) Code to generate sbatch scripts for parameter sweeps.
 ├── README.md              # This file.
 ├── requirements.txt       # List of required Python packages.
 ├── results/               # Directory for CSV output files (created automatically).
-├── sbatch_scripts/        # Directory for generated sbatch scripts for full parameter sweeps.
-├── sbatch_missing/        # Directory for sbatch scripts of missing configurations.
-└── plots/                 # Directory for saving generated figures.
+└── plots/                 # Directory for saving generated figures (created automatically).
 ```
 
 ---
@@ -26,17 +23,10 @@ This repository contains the code for our submission to **ECML PKDD 2025**, titl
 Clone the repository and install the dependencies:
 
 ```bash
-git clone https://github.com/yourusername/FedTD.git
-cd FedTD
+git clone https://github.com/AliBeikmohammadi/FedRL
+cd FedRL
 pip install -r requirements.txt
 ```
-
-*requirements.txt* should include:
-- numpy
-- pandas
-- matplotlib
-- seaborn
-
 ---
 
 ## Usage
@@ -57,19 +47,7 @@ python FedTD-main.py --n 10 --N 5 --Delta 0.1 --gamma 0.95 --alpha 0.01 --beta 0
 
 This will generate a CSV file (named uniquely based on the configuration) in the `./results` directory.
 
-### Parameter Sweeps & SLURM Jobs
-
-For extensive parameter sweeps, you can generate sbatch scripts for each configuration using the provided `submit_jobs.py` script. This will create sbatch files (stored under `sbatch_scripts/` or `sbatch_missing/`) that you can submit as an array job on a SLURM cluster:
-
-```bash
-python submit_jobs.py
-```
-
-Submit the generated sbatch array job as follows:
-
-```bash
-sbatch --array=1-<total_configs> sbatch_scripts/%a.sbatch
-```
+---
 
 ### Plotting Results
 
@@ -96,9 +74,6 @@ Here are some suggested experiments and plots to gain insights into the performa
 - **Effect of Number of Agents (\(N\))**  
   Analyze how increasing the number of agents affects the convergence and variance of the global value estimates. A plot of final error versus \(N\) will demonstrate the benefit of collaborative learning.
 
-- **Combined Parameter Interactions**  
-  Consider scatter or box plots of final error metrics as functions of multiple parameters (e.g., final RMSE vs. \(N\) for different \(\Delta\) values) to summarize overall performance.
-
 Our plotting code in `FedTD-plot.py` supports flexible filtering and grouping, so you can easily generate these plots by selecting appropriate CSV files and parameters.
 
 ---
@@ -107,20 +82,9 @@ Our plotting code in `FedTD-plot.py` supports flexible filtering and grouping, s
 
 If you find this code useful in your research, please cite our paper:
 
-```bibtex
-@inproceedings{yourpaper2025,
-  author = {Beikmohammadi, Ali and Collaborators},
-  title = {Collaborative Value Function Estimation Under Model Mismatch: A Federated Temporal Difference Analysis},
-  booktitle = {ECML PKDD 2025},
-  year = {2025},
-  publisher = {Springer},
-  address = {Location}
-}
 ```
-
-Also, please cite related works as appropriate.
-
----
+TBD
+```
 
 ## Contributing
 
@@ -133,5 +97,3 @@ Contributions, bug reports, and suggestions are welcome! Please open an issue or
 This project is licensed under the [MIT License](LICENSE).
 
 ---
-
-*This repository is maintained by Ali Beikmohammadi and colleagues.*
