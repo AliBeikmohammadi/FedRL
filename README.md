@@ -33,19 +33,59 @@ pip install -r requirements.txt
 
 ### Running the Simulation
 
-You can run the Federated TD(0) simulation with default parameters:
+The main simulation script (`FedTD-main.py`) can be run with various arguments. To view all available options, use:
+
+```bash
+python FedTD-main.py -h
+```
+
+This will display:
+
+```
+usage: FedTD-main.py [-h] [--n N] [--N N] [--Delta DELTA] [--gamma GAMMA] 
+                     [--alpha ALPHA] [--beta BETA] [--T T] [--K K] 
+                     [--sampling {iid,markov}] [--iid_option {uniform,stationary}]
+                     [--reward_type {uniform,gaussian}] [--seeds SEEDS [SEEDS ...]]
+                     [--out_dir OUT_DIR]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --n N                 Number of states (default: 10)
+  --N N                 Number of agents (default: 10)
+  --Delta DELTA         Heterogeneity level (default: 0.01)
+  --gamma GAMMA         Discount factor (default: 0.8)
+  --alpha ALPHA         Local step size (default: 0.01)
+  --beta BETA           Global step size (default: 0.1)
+  --T T                 Total number of communication rounds (default: 100000)
+  --K K                 Number of local steps per round (default: 5)
+  --sampling {iid,markov}
+                        Sampling mode: "iid" or "markov" (default: "iid")
+  --iid_option {uniform,stationary}
+                        IID option: "uniform" or "stationary" (default: "uniform")
+  --reward_type {uniform,gaussian}
+                        Reward type: "uniform" or "gaussian" (default: "uniform")
+  --seeds SEEDS [SEEDS ...]
+                        List of random seeds (default: [0,1,2,3,4])
+  --out_dir OUT_DIR     Output directory for CSV results (default: "./results")
+```
+
+### Example Usage
+
+Run with default settings:
 
 ```bash
 python FedTD-main.py
 ```
 
-Or, specify custom parameters via command-line arguments. For example:
+Run with custom parameters:
 
 ```bash
 python FedTD-main.py --n 10 --N 5 --Delta 0.1 --gamma 0.95 --alpha 0.01 --beta 0.5 --T 100000 --K 5 --sampling iid --iid_option uniform --reward_type uniform --seeds 0 1 2 3 4 --out_dir ./results
 ```
 
-This will generate a CSV file (named uniquely based on the configuration) in the `./results` directory.
+This will generate a CSV file (uniquely named based on the configuration) in the `./results` directory.
+
+---
 
 ---
 
