@@ -1,7 +1,7 @@
 # FedTD(0)
 ## Collaborative Value Function Estimation Under Model Mismatch: A Federated Temporal Difference Analysis
 
-This repository contains the code for our submission to **ECML PKDD 2025**, titled **"Collaborative Value Function Estimation Under Model Mismatch: A Federated Temporal Difference Analysis."** The code implements a Federated TD(0) algorithm for policy evaluation in environments with model mismatch. In our setting, each agent operates under a perturbed MDP (sampled from a distribution centered at the true transition model), and agents periodically share their value estimates to collaboratively learn the true value function.
+This repository contains the code for our paper presented in **ECML PKDD 2025**, titled **"Collaborative Value Function Estimation Under Model Mismatch: A Federated Temporal Difference Analysis."** The code implements a Federated TD(0) algorithm for policy evaluation in environments with model mismatch. In our setting, each agent operates under a perturbed MDP (sampled from a distribution centered at the true transition model), and agents periodically share their value estimates to collaboratively learn the true value function.
 
 ---
 
@@ -123,7 +123,13 @@ Our plotting code in `FedTD-plot.py` supports flexible filtering and grouping, s
 If you find this code useful in your research, please cite our paper:
 
 ```
-TBD
+@inproceedings{beikmohammadi2025collaborative ,
+  title={Collaborative Value Function Estimation Under Model Mismatch: A Federated Temporal Difference Analysis},
+  author={Beikmohammadi, Ali and Khirirat, Sarit and Richt{\'a}rik, Peter and Magn{\'u}sson, Sindri},
+  booktitle={Joint European Conference on Machine Learning and Knowledge Discovery in Databases},
+  year={2025},
+  organization={Springer}
+}
 ```
 
 ## Contributing
